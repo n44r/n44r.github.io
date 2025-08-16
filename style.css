@@ -1,0 +1,633 @@
+/* Matrix Blog - Early 2000s Retro Style */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Fira+Code:wght@300;400;500&display=swap');
+
+body {
+    font-family: 'Anonymous Pro', 'Source Code Pro', 'Courier New', monospace;
+    background-color: #000000;
+    color: #00ff00;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    background-image: 
+        radial-gradient(circle at 20% 80%, #003300 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #001100 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, #002200 0%, transparent 50%);
+    min-height: 100vh;
+    padding-top: 0; /* No padding needed for side-positioned control */
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    border: 2px solid #00ff00;
+    background-color: #000000;
+    box-shadow: 0 0 20px #00ff00;
+}
+
+/* Header and Banner */
+.banner {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(45deg, #001100, #003300);
+    border-bottom: 2px solid #00ff00;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(100%) hue-rotate(90deg) saturate(200%) brightness(0.7);
+    opacity: 0.6;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.banner-text h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    font-family: 'Anonymous Pro', monospace;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    animation: matrix-glow 2s ease-in-out infinite alternate;
+    text-transform: lowercase;
+}
+
+.banner-text p {
+    font-size: 1.0em;
+    font-weight: 400;
+    font-family: 'Anonymous Pro', monospace;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+@keyframes matrix-glow {
+    from { text-shadow: 0 0 10px #00ff00; }
+    to { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+}
+
+/* Cyberpunk Hover Effects */
+.banner.cyberpunk-hover {
+    background: linear-gradient(45deg, #001100, #003300, #001100);
+    background-size: 400% 400%;
+    animation: cyberpunk-bg 0.5s ease infinite;
+    box-shadow: 
+        inset 0 0 50px rgba(0, 255, 0, 0.2),
+        0 0 30px rgba(0, 255, 0, 0.5);
+    border-bottom: 2px solid #00ff00;
+}
+
+.banner.cyberpunk-hover .banner-text {
+    animation: cyberpunk-flicker 0.1s ease infinite;
+}
+
+.banner.cyberpunk-hover .banner-text p {
+    text-shadow: 
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 15px #00ff00,
+        2px 0 0 #ff0000,
+        -2px 0 0 #0000ff;
+    animation: cyberpunk-text-glitch 0.2s ease infinite;
+}
+
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.banner-text {
+    z-index: 2;
+    position: relative;
+}
+
+@keyframes cyberpunk-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes cyberpunk-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+}
+
+@keyframes cyberpunk-text-glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+/* Navigation */
+.navigation {
+    background-color: #001100;
+    border-bottom: 1px solid #00ff00;
+    padding: 15px;
+    text-align: center;
+}
+
+.navigation a {
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    font-family: 'Anonymous Pro', monospace;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.navigation a:hover {
+    border: 1px solid #00ff00;
+    background-color: #002200;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+/* Main Content */
+.content {
+    padding: 30px;
+}
+
+.articles h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff00;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+/* Blog Posts */
+.blog-post {
+    background-color: #001100;
+    border: 1px solid #00ff00;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.post-header {
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.post-header h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #00cc00;
+}
+
+.post-meta .date {
+    font-weight: bold;
+}
+
+.post-meta .author {
+    font-style: italic;
+}
+
+.post-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #00dd00;
+    font-family: 'Fira Code', monospace;
+    font-weight: 300;
+}
+
+.read-more {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.read-more a {
+    color: #00ff00;
+    text-decoration: none;
+    border: 1px solid #00ff00;
+    padding: 5px 15px;
+    background-color: #002200;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.read-more a:hover {
+    background-color: #00ff00;
+    color: #000000;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+/* Footer */
+footer {
+    background-color: #001100;
+    border-top: 2px solid #00ff00;
+    padding: 20px;
+    text-align: center;
+    color: #00cc00;
+}
+
+.footer-quote {
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+    border: 1px solid #00ff00;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
+
+/* Matrix Rain Effect (Minimal) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Home Page Styles */
+.home-section {
+    text-align: center;
+}
+
+.home-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff00;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.home-content {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #001100;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.home-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #00dd00;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* Contact Page Styles */
+.contact-section {
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff00;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.contact-message {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.error-box {
+    background-color: #001100;
+    border: 2px solid #ff0000;
+    padding: 30px;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    text-align: center;
+}
+
+.error-box h3 {
+    color: #ff0000;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0000;
+    animation: error-blink 2s ease-in-out infinite alternate;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.error-box p {
+    color: #00dd00;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.error-code {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #ff0000;
+}
+
+.error-code span {
+    color: #ff0000;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+@keyframes error-blink {
+    from { 
+        color: #ff0000;
+        text-shadow: 0 0 10px #ff0000; 
+    }
+    to { 
+        color: #ff6666;
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; 
+    }
+}
+
+/* Terminal Window Styles */
+.terminal-window {
+    background-color: #000000;
+    border: 1px solid #00ff00;
+    border-radius: 0;
+    margin: 50px auto;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    font-family: 'Anonymous Pro', monospace;
+    text-align: left;
+}
+
+.terminal-header {
+    background-color: #001100;
+    border-bottom: 1px solid #00ff00;
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.terminal-title {
+    color: #00ff00;
+    font-weight: 700;
+}
+
+.terminal-body {
+    padding: 20px;
+    background-color: #000000;
+    min-height: 300px;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.prompt {
+    color: #00ff00;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.command {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.output {
+    color: #ff6666;
+    font-weight: 400;
+}
+
+.terminal-line.error .output {
+    color: #ff4444;
+}
+
+.status-failed {
+    color: #ff0000;
+    font-weight: 700;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.terminal-line.cursor {
+    margin-top: 15px;
+}
+
+.blinking-cursor {
+    color: #00ff00;
+    font-weight: 700;
+    animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.terminal-line:hover {
+    background-color: rgba(0, 255, 0, 0.05);
+}
+
+.command:hover {
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 0;
+        border: none;
+    }
+    
+    .banner-text h1 {
+        font-size: 2em;
+    }
+    
+    .navigation a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .error-box {
+        margin: 0 20px;
+        padding: 20px;
+    }
+}
+
+/* Full Article Page Styles */
+.full-article {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #001100;
+    border: 1px solid #00ff00;
+    padding: 40px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.article-header {
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.article-header h1 {
+    font-size: 2.2em;
+    color: #00ff00;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    text-shadow: 0 0 10px #00ff00;
+    margin-bottom: 15px;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 0.9em;
+    color: #00cc00;
+}
+
+.article-meta .date {
+    font-weight: 400;
+}
+
+.article-meta .author {
+    font-style: italic;
+}
+
+.article-content {
+    font-family: 'Fira Code', monospace;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #00dd00;
+}
+
+.article-content p {
+    margin-bottom: 25px;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+.article-navigation {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #00ff00;
+    text-align: center;
+}
+
+.back-link {
+    color: #00ff00;
+    text-decoration: none;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;
+    padding: 8px 20px;
+    border: 1px solid #00ff00;
+    background-color: #002200;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.back-link:hover {
+    background-color: #00ff00;
+    color: #000000;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .full-article {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .article-header h1 {
+        font-size: 1.8em;
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

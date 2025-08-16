@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrix Banner Generator</title>
+</head>
+<body>
+    <canvas id="banner" width="1024" height="200" style="border: 1px solid #00ff00; background: #000;"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('banner');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill background
+        const gradient = ctx.createLinearGradient(0, 0, 1024, 200);
+        gradient.addColorStop(0, '#001100');
+        gradient.addColorStop(0.5, '#003300');
+        gradient.addColorStop(1, '#001100');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1024, 200);
+        
+        // Add matrix rain effect
+        ctx.fillStyle = '#00ff0033';
+        for (let i = 0; i < 50; i++) {
+            const x = Math.random() * 1024;
+            const y = Math.random() * 200;
+            ctx.fillRect(x, y, 2, Math.random() * 20 + 5);
+        }
+        
+        // Add main text
+        ctx.fillStyle = '#00ff00';
+        ctx.font = 'bold 36px Courier New';
+        ctx.textAlign = 'center';
+        ctx.fillText('THE MATRIX BLOG', 512, 80);
+        
+        ctx.font = '18px Courier New';
+        ctx.fillText('Wake up... The blog has you...', 512, 120);
+        
+        // Add glow effect
+        ctx.shadowColor = '#00ff00';
+        ctx.shadowBlur = 10;
+        ctx.font = 'bold 36px Courier New';
+        ctx.fillText('THE MATRIX BLOG', 512, 80);
+        
+        // Download as image
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.download = 'banner.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+        }, 1000);
+    </script>
+</body>
+</html>
